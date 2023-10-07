@@ -79,16 +79,47 @@ HTML;
     <form method="POST" action="">
         1. szam: <input type="number" name="szam1">
         <br>
+        Muvelet: <input type="text" name="muvelet">
+        <br>
         2. szam: <input type="number" name="szam2">
         <br>
         <input type="submit" value="Szamold ki!" name="szamol">
     </form>
     <?php
 
-    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['szamol'])){
-        $szam_1=$_REQUEST["szam1"];
-        echo $szam_1;
-    }  
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['szamol'])) {
+        szamoldKi();
+    }
+
+    function szamoldKi()
+    {
+        $szam_1 = (int) $_REQUEST["szam1"];
+        $szam_2 = (int) $_REQUEST["szam2"];
+        $muvelet = $_REQUEST["muvelet"];
+        $eredmeny = 0;
+
+        if ($szam_2 != 0 && ($muvelet == "+" || $muvelet == "*" || $muvelet == "-" || $muvelet == "/")) {
+            switch ($muvelet) {
+                case "+":
+                    $eredmeny = $szam_1 + $szam_2;
+                    break;
+                case "-":
+                    $eredmeny = $szam_1 - $szam_2;
+                    break;
+                case "*":
+                    $eredmeny = $szam_1 * $szam_2;
+                    break;
+                case "/":
+                    $eredmeny = $szam_1 / $szam_2;
+                    break;
+            }
+            echo "Eredmeny: $szam_1 $muvelet $szam_2 = $eredmeny";
+        } elseif ($szam_2 != 0) {
+            echo "Helytelen muveleti jel.";
+        } elseif ($szam_2 == 0 && $muvelet == "/") {
+            echo "Nullaval valo osztas.";
+        }
+    }
 
 
     echo "<h2>6. feladat</h2>";
