@@ -124,6 +124,63 @@ HTML;
 
     echo "<h2>6. feladat</h2>";
     ?>
+    <form method="POST" action="">
+        Honap: <input type="text" name="honap">
+        <input type="submit" value="Melyik evszak?" name="evszak">
+    </form>
+    <?php
+
+    if (isset($_POST["evszak"])) {
+        melyikEvszak();
+    }
+
+    function melyikEvszak()
+    {
+        $honap = $_REQUEST['honap'];
+
+        // IF
+        if($honap=="januar" || $honap=="februar" || $honap=="december"){
+            echo "Tel";
+        }
+        elseif($honap=="junius" || $honap=="julius" || $honap=="augusztus"){
+            echo "Nyar";
+        }
+        elseif($honap=="szeptember" || $honap=="oktober" || $honap=="november"){
+            echo "Osz";}
+        elseif($honap=="marcius" || $honap=="aprilis" || $honap=="majus"){
+            echo "Tavasz";
+        }else{
+            echo "Nincs ilyen honap.";
+        }
+    
+        // SWITCH
+        switch ($honap) {
+            case "szeptember":
+            case "oktober":
+            case "november":
+                echo "Osz";
+                break;
+            case "januar":
+            case "februar":
+            case "december":
+                echo "Tel";
+                break;
+            case "marcius":
+            case "aprilis":
+            case "majus":
+                echo "Tavasz";
+                break;
+            case "junius":
+            case "julius":
+            case "augusztus":
+                echo "Nyar";
+                break;
+            default:
+                echo "Nincs ilyen honap.";
+        }
+    }
+
+    ?>
 </body>
 
 </html>
