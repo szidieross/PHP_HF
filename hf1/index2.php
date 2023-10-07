@@ -17,16 +17,16 @@
 
     echo "<h2>2. feladat</h2>";
     ?>
-    <!-- <form method="post" action="">
+    <form method="post" action="">
         Seconds: <input type="text" name="fseconds">
         <input type="submit" name="seconds">
-    </form> -->
+    </form>
     <?php
 
-    // if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['seconds'])) {
-    //     // Call the function when the form is submitted
-    //     secondsToHours();
-    // }
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['seconds'])) {
+        // Call the function when the form is submitted
+        secondsToHours();
+    }
 
     
 

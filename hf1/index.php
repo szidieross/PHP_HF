@@ -74,6 +74,23 @@ HTML;
     echo $html;
 
     echo "<h2>5. feladat</h2>";
+
+    ?>
+    <form method="POST" action="">
+        1. szam: <input type="number" name="szam1">
+        <br>
+        2. szam: <input type="number" name="szam2">
+        <br>
+        <input type="submit" value="Szamold ki!" name="szamol">
+    </form>
+    <?php
+
+    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['szamol'])){
+        $szam_1=$_REQUEST["szam1"];
+        echo $szam_1;
+    }  
+
+
     echo "<h2>6. feladat</h2>";
     ?>
 </body>
