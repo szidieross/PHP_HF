@@ -141,8 +141,8 @@
         }
 
         public function kiir(){
-            echo "hi";
-            var_dump($this->lista);
+            foreach($this->lista as $termek)
+            echo $termek->kiir();
         }
     }
 
@@ -181,6 +181,9 @@
     }
 
     $t1 = new Termek("Alma", 1, 1.5);
+    $t2 = new Termek("Korte", 3, 2);
+    $t3 = new Termek("Cipo", 1, 400);
+    $t4 = new Termek("Nadrag", 3, 250);
     $t1->kiir();
     echo $t1->get_mennyiseg();
     echo "<br>";
@@ -189,6 +192,9 @@
     echo "<br>";
     $l1=new Bevasarlo_Lista();
     $l1->hozzaad($t1);
+    $l1->hozzaad($t2);
+    $l1->hozzaad($t3);
+    $l1->hozzaad($t4);
     $l1->kiir();
 
     ?>
