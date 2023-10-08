@@ -87,15 +87,15 @@
     $szinek = array('A' => 'Kek', 'B' => 'Zold', 'c' => 'Piros');
 
     //classic
-    function lower_upper_case($array, $to_upper_case = false)
+    function lower_upper_case($array, $to_upper_case)
     {
         $transformed_array = array();
-        if ($to_upper_case == false) {
+        if ($to_upper_case == "kisbetus") {
             foreach ($array as $key => $val) {
                 $val = strtolower($val);
                 $transformed_array[$key] = $val;
             }
-        } else {
+        } elseif ($to_upper_case == "nagybetus") {
             foreach ($array as $key => $val) {
                 $val = strtoupper($val);
                 $transformed_array[$key] = $val;
@@ -104,8 +104,8 @@
 
         return $transformed_array;
     }
-    var_dump(lower_upper_case($szinek, false));
-    var_dump(lower_upper_case($szinek, true));
+    var_dump(lower_upper_case($szinek, "kisbetus"));
+    var_dump(lower_upper_case($szinek, "nagybetus"));
     echo "<br><br>";
 
     //array_map
