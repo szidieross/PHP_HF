@@ -81,7 +81,52 @@
         echo "$sor<br>";
     }
 
+
     echo "<h2>4. feladat</h2>";
+
+    $szinek = array('A' => 'Kek', 'B' => 'Zold', 'c' => 'Piros');
+
+    //classic
+    function lower_upper_case($array, $to_upper_case = false)
+    {
+        $transformed_array = array();
+        if ($to_upper_case == false) {
+            foreach ($array as $key => $val) {
+                $val = strtolower($val);
+                $transformed_array[$key] = $val;
+            }
+        } else {
+            foreach ($array as $key => $val) {
+                $val = strtoupper($val);
+                $transformed_array[$key] = $val;
+            }
+        }
+
+        return $transformed_array;
+    }
+    var_dump(lower_upper_case($szinek, false));
+    var_dump(lower_upper_case($szinek, true));
+    echo "<br><br>";
+
+    //array_map
+    
+    function to_lower_case($value)
+    {
+        return strtolower($value);
+    }
+
+    function to_upper_case($value)
+    {
+        return strtoupper($value);
+    }
+
+    $transformed_array = array_map("to_lower_case", $szinek);
+    var_dump($transformed_array);
+
+    $transformed_array = array_map("to_upper_case", $szinek);
+    var_dump($transformed_array);
+
+
     echo "<h2>5. feladat</h2>";
     ?>
 </body>
