@@ -6,6 +6,10 @@
         .kek {
             background-color: lightblue;
         }
+
+        .piros {
+            color: red;
+        }
     </style>
 </head>
 
@@ -37,7 +41,22 @@
 
 
     echo "<h2>2. feladat</h2>";
+
+    $orszagok = array(
+        " Magyarország " => " Budapest",
+        " Románia" => " Bukarest",
+        "Belgium" => "Brussels",
+        "Austria" => "Vienna",
+        "Poland" => "Warsaw"
+    );
+
+    foreach ($orszagok as $orszag => $fovaros) {
+        echo "<p>$orszag fővárosa <span class='piros'>$fovaros</span></p>";
+    }
+
     echo "<h2>3. feladat</h2>";
+
+    
     echo "<h2>4. feladat</h2>";
     echo "<h2>5. feladat</h2>";
     ?>
