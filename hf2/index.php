@@ -128,6 +128,69 @@
 
 
     echo "<h2>5. feladat</h2>";
+
+    class Bevasarlo_Lista
+    {
+        // public $termek;
+        public $lista=array();
+
+        public function hozzaad(Termek $termek)
+        {
+            // $this->termek = $termek;
+            $this->lista[]=$termek;
+        }
+
+        public function kiir(){
+            echo "hi";
+            var_dump($this->lista);
+        }
+    }
+
+    class Termek
+    {
+        public $nev;
+        public $mennyiseg;
+        public $egysegar;
+        // public $termek = array("nev" => $nev, "mennyiseg" => $mennyiseg, "egysegar" => $egysegar);
+    
+        public function __construct($nev, $mennyiseg, $egysegar)
+        {
+            // $this->mennyiseg["nev"] = $nev;
+            // $this->termek["mennyiseg"] = $mennyiseg;
+            // $this->termek["egysegar"] = $egysegar;
+            $this->nev = $nev;
+            $this->mennyiseg = $mennyiseg;
+            $this->egysegar = $egysegar;
+        }
+
+        public function kiir()
+        {
+            echo "<p>Nev: $this->nev, mennyiseg: $this->mennyiseg, egysegar: $this->egysegar</p>";
+            // var_dump($this->termek);
+        }
+
+        public function get_mennyiseg()
+        {
+            return $this->mennyiseg;
+        }
+
+        public function get_ar()
+        {
+            return $this->egysegar;
+        }
+    }
+
+    $t1 = new Termek("Alma", 1, 1.5);
+    $t1->kiir();
+    echo $t1->get_mennyiseg();
+    echo "<br>";
+    echo $t1->get_ar();
+    
+    echo "<br>";
+    $l1=new Bevasarlo_Lista();
+    $l1->hozzaad($t1);
+    $l1->kiir();
+
     ?>
 </body>
 
