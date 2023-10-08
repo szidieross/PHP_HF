@@ -136,6 +136,7 @@
         public function hozzaad(Termek $termek)
         {
             $this->lista[] = $termek;
+            echo "<p>$termek->mennyiseg db $termek->nev hozzaadva</p>";
         }
 
         public function torol(Termek $termek)
@@ -172,6 +173,15 @@
             }
 
             $this->lista = $filteredArray;
+        }
+
+        public function ossz_koltseg()
+        {
+            $osszeg = 0;
+            foreach ($this->lista as $items) {
+                $osszeg += $items->egysegar * $items->mennyiseg;
+            }
+            return "Ossz: $osszeg";
         }
 
         public function kiir()
@@ -225,12 +235,14 @@
     $l1->hozzaad($t2);
     $l1->hozzaad($t3);
     $l1->hozzaad($t4);
+    echo $l1->ossz_koltseg();
     $l1->kiir();
     $l1->torol($t1);
     $l1->kiir();
     $l1->torol_db($t4, 1);
     $l1->torol_db($t2, 4);
     $l1->kiir();
+    echo $l1->ossz_koltseg();
 
     ?>
 </body>
