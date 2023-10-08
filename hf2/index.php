@@ -148,6 +148,7 @@
             }
 
             $this->lista = $filteredArray;
+            echo "<p>$termek->nev torolve</p>";
         }
 
         public function torol_db(Termek $termek, $db)
@@ -161,11 +162,11 @@
                     $uj_mennyiseg = $termek->mennyiseg - $db;
 
                     if ($uj_mennyiseg > 0) {
-                        echo $uj_mennyiseg;
-                        echo "<br>";
                         $this->lista[$i]->mennyiseg = $uj_mennyiseg;
                         $filteredArray[] = $this->lista[$i];
-                        var_dump($filteredArray);
+                        echo "<p>$db db $termek->nev torolve</p>";
+                    } else {
+                        echo "<p>Minden $termek->nev torolve</p>";
                     }
                 }
             }
@@ -228,6 +229,7 @@
     $l1->torol($t1);
     $l1->kiir();
     $l1->torol_db($t4, 1);
+    $l1->torol_db($t2, 4);
     $l1->kiir();
 
     ?>
