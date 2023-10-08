@@ -131,18 +131,33 @@
 
     class Bevasarlo_Lista
     {
-        // public $termek;
-        public $lista=array();
+        public $lista = array();
 
         public function hozzaad(Termek $termek)
         {
-            // $this->termek = $termek;
-            $this->lista[]=$termek;
+            $this->lista[] = $termek;
+        }
+        public function torol(Termek $termek)
+        {
+            $filteredArray = array();
+            foreach ($this->lista as $elem) {
+                if ($elem->nev !== $termek->nev) {
+                    $filteredArray[] = $elem;
+                }
+            }
+
+            $this->lista = $filteredArray;
         }
 
-        public function kiir(){
-            foreach($this->lista as $termek)
-            echo $termek->kiir();
+        public function kiir()
+        {
+            echo "<h3>Bevasarlo lista</h3><ul>";
+            foreach ($this->lista as $termek) {
+                echo "<li>";
+                echo $termek->kiir();
+                echo "</li>";
+            }
+            echo "</ul>";
         }
     }
 
@@ -151,13 +166,9 @@
         public $nev;
         public $mennyiseg;
         public $egysegar;
-        // public $termek = array("nev" => $nev, "mennyiseg" => $mennyiseg, "egysegar" => $egysegar);
-    
+
         public function __construct($nev, $mennyiseg, $egysegar)
         {
-            // $this->mennyiseg["nev"] = $nev;
-            // $this->termek["mennyiseg"] = $mennyiseg;
-            // $this->termek["egysegar"] = $egysegar;
             $this->nev = $nev;
             $this->mennyiseg = $mennyiseg;
             $this->egysegar = $egysegar;
@@ -166,7 +177,6 @@
         public function kiir()
         {
             echo "<p>Nev: $this->nev, mennyiseg: $this->mennyiseg, egysegar: $this->egysegar</p>";
-            // var_dump($this->termek);
         }
 
         public function get_mennyiseg()
@@ -184,17 +194,14 @@
     $t2 = new Termek("Korte", 3, 2);
     $t3 = new Termek("Cipo", 1, 400);
     $t4 = new Termek("Nadrag", 3, 250);
-    $t1->kiir();
-    echo $t1->get_mennyiseg();
-    echo "<br>";
-    echo $t1->get_ar();
-    
-    echo "<br>";
-    $l1=new Bevasarlo_Lista();
+
+    $l1 = new Bevasarlo_Lista();
     $l1->hozzaad($t1);
     $l1->hozzaad($t2);
     $l1->hozzaad($t3);
     $l1->hozzaad($t4);
+    $l1->kiir();
+    $l1->torol($t1);
     $l1->kiir();
 
     ?>
