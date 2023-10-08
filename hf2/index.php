@@ -137,12 +137,36 @@
         {
             $this->lista[] = $termek;
         }
+
         public function torol(Termek $termek)
         {
             $filteredArray = array();
             foreach ($this->lista as $elem) {
                 if ($elem->nev !== $termek->nev) {
                     $filteredArray[] = $elem;
+                }
+            }
+
+            $this->lista = $filteredArray;
+        }
+
+        public function torol_db(Termek $termek, $db)
+        {
+            $filteredArray = array();
+            for ($i = 0; $i < count($this->lista); $i++) {
+                if ($this->lista[$i]->nev !== $termek->nev) {
+                    $filteredArray[] = $this->lista[$i];
+                }
+                if ($this->lista[$i]->nev === $termek->nev) {
+                    $uj_mennyiseg = $termek->mennyiseg - $db;
+
+                    if ($uj_mennyiseg > 0) {
+                        echo $uj_mennyiseg;
+                        echo "<br>";
+                        $this->lista[$i]->mennyiseg = $uj_mennyiseg;
+                        $filteredArray[] = $this->lista[$i];
+                        var_dump($filteredArray);
+                    }
                 }
             }
 
@@ -202,6 +226,8 @@
     $l1->hozzaad($t4);
     $l1->kiir();
     $l1->torol($t1);
+    $l1->kiir();
+    $l1->torol_db($t4, 1);
     $l1->kiir();
 
     ?>
