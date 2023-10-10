@@ -24,6 +24,23 @@ class Cart
     public function addProduct(Product $product, int $quantity): CartItem
     {
         //TODO Implement method
+        // foreach ($this->items as $item) {
+        //     if ($item->getProduct === $product) {
+        //         $item->increaseQuantity($quantity);
+        //     }else{
+        //         $items[] = $product;
+        //     }
+        // }
+        foreach ($this->items as $item) {
+            if ($item->getProduct() === $product) {
+                $item->setQuantity(min($item->getQuantity() + $quantity, $product->getAvailableQuantity()));
+                return $item;
+            }
+        }
+        $cartItem = new CartItem($product, $quantity);
+        $this->items[] = $cartItem;
+        return $cartItem;
+
     }
 
     /**
@@ -34,6 +51,12 @@ class Cart
     public function removeProduct(Product $product)
     {
         //TODO Implement method
+        foreach ($this->items as $key => $item) {
+            if ($item->getProduct() === $product) {
+                unset($this->items[$key]);
+                return;
+            }
+        }
     }
 
     /**
@@ -44,6 +67,11 @@ class Cart
     public function getTotalQuantity(): int
     {
         //TODO Implement method
+        $totalQuantity = 0;
+        foreach ($this->items as $item) {
+            $totalQuantity += $item->getQuantity();
+        }
+        return $totalQuantity;
     }
 
     /**
@@ -54,5 +82,14 @@ class Cart
     public function getTotalSum(): float
     {
         //TODO Implement method
+        $totalSum = 0;
+        foreach ($this->items as $item) {
+            $db=$item->getProduct()->getAvailableQuantity();
+            $price=$item->getProduct()->getPrice();
+            echo "<br>db $db <br>";
+            echo "<br>price $price <br>";
+            $totalSum += $db * $price;
+        }
+        return $totalSum;
     }
 }
