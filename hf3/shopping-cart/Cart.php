@@ -86,8 +86,8 @@ class Cart
         foreach ($this->items as $item) {
             $db=$item->getProduct()->getAvailableQuantity();
             $price=$item->getProduct()->getPrice();
-            echo "<br>db $db <br>";
-            echo "<br>price $price <br>";
+            // echo "<br>db $db <br>";
+            // echo "<br>price $price <br>";
             $totalSum += $db * $price;
         }
         return $totalSum;
