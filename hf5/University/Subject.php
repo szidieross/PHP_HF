@@ -50,7 +50,7 @@ class Subject
     }
     // TODO Generate constructor for all attributes. $students argument of the constructor can be empty
 
-    public function __construct(string $code, string $name, ?array $students=[])
+    public function __construct(string $code, string $name, ?array $students = [])
     {
         $this->code = $code;
         $this->name = $name;
@@ -75,17 +75,15 @@ class Subject
         return null;
     }
 
-    public function deleteStudent(Student $student): void{
-        // if ($this->isStudentExists($studentNumber)) {
-            $studentNumber=$student->getStudentNumber();
-            var_dump($this->getStudents());
+    public function deleteStudent(Student $student): void
+    {
+        $studentNumber = $student->getStudentNumber();
+        if ($this->isStudentExists($studentNumber)) {
             unset($this->students[$studentNumber]);
-            var_dump($this->getStudents());
-            echo "yep";
-        // }
-        // else{
-        //     echo "nope";
-        // }
+            echo $student->getName() . " successfully deleted on subject " . $this->getName() . "<br/>";
+        } else {
+            throw new \Exception($student->getName() . " could not be deleted on subject " . $this->getName() . "<br/>");
+        }
     }
 
     // ToDo
