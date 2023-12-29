@@ -12,7 +12,7 @@ class Student
 {
     private string $name;
     private string $studentNumber;
-    private array $grades=[];
+    private array $grades = [];
 
     // TODO Generate constructor with both arguments.
     public function __construct(string $name, string $studentNumber)
@@ -39,22 +39,46 @@ class Student
     {
         $this->studentNumber = $studentNumber;
     }
-    
-    public function setGrade(Subject $subject,float $grade): void{
-        $subjectCode=$subject->getCode();
-        $this->grades[$subjectCode] = $grade;
+
+    public function setGrade(Subject $subject, float $grade): void
+    {
+        $students = $subject->getStudents();
+        if (array_key_exists($this->getStudentNumber(), $students)) {
+            $subjectCode = $subject->getCode();
+            $this->grades[$subjectCode] = $grade;
+        } else {
+            echo "<br/>" . $this->getName() . " did not take " . $subject->getName() . "<br/>";
+        }
     }
 
-    public function getGrade(string $subjectCode){
+    public function getGrade(string $subjectCode)
+    {
         return $this->grades[$subjectCode];
     }
 
-    public function getAvgGrade():float{
-        $total=0;
-        foreach($this->grades as $grade) {
-            $total+=$grade;
+    public function getAvgGrade(): float
+    {
+        $total = 0;
+        foreach ($this->grades as $grade) {
+            $total += $grade;
         }
-        $average=$total/count($this->grades);
+        $average = $total / count($this->grades);
         return $average;
+    }
+
+    public function printGrades(): string
+    {
+        $output = "Course Name - Course Grade";
+
+        // foreach ($this->grades as $grade) {
+        //     $output .= "\n" . $grade . "\t\t" . $grade;
+        // }
+
+        foreach ($this->grades as $subjectCode => $grade) {
+            
+            $output .= "\n" . $subjectCode . "\t\t" . $grade;
+        }
+
+        return $output;
     }
 }
