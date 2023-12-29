@@ -35,7 +35,7 @@ class Author
         // TODO Create instance of the book. Add into $books array and return it
         $book = new Book($title, $price);
         $this->books[] = $book;
-        echo $book;
+        // echo $book;
         return $book;
     }
 

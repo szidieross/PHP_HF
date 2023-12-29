@@ -7,9 +7,10 @@ class Library extends AbstractLibrary
     public $authors = array();
 
     // TODO Implement all the methods declared in AbstractLibrary class
-    public function addAuthor(string $authorName): Author
+    public function addAuthor(string $authorName, array $books=[]): Author
     {
-        $author = new Author($authorName);
+        $author = new Author($authorName, $books);
+        $this->authors[] = $author;
         /**
          * Method accepts author name and Book. Finds author in $authors array and adds book to this array.
          * The method must set $book's $author property with the found author also.
@@ -28,7 +29,7 @@ class Library extends AbstractLibrary
          *
          * @param $authorName
          */
-
+        $this->authors[$authorName]=$book;
     }
 
     public function getBooksForAuthor($authorName)
