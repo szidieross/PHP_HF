@@ -12,6 +12,7 @@ class Student
 {
     private string $name;
     private string $studentNumber;
+    private array $grades=[];
 
     // TODO Generate constructor with both arguments.
     public function __construct(string $name, string $studentNumber)
@@ -38,5 +39,22 @@ class Student
     {
         $this->studentNumber = $studentNumber;
     }
+    
+    public function setGrade(Subject $subject,float $grade): void{
+        $subjectCode=$subject->getCode();
+        $this->grades[$subjectCode] = $grade;
+    }
 
+    public function getGrade(string $subjectCode){
+        return $this->grades[$subjectCode];
+    }
+
+    public function getAvgGrade():float{
+        $total=0;
+        foreach($this->grades as $grade) {
+            $total+=$grade;
+        }
+        $average=$total/count($this->grades);
+        return $average;
+    }
 }
