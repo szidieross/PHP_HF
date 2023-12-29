@@ -95,7 +95,6 @@ class University extends AbstractUniversity
                 $students = $subject->getStudents();
                 if (count($students) > 0) {
                     foreach ($students as $student) {
-                        echo $student->getName();
                         $output .= "\t<li>" . $student->getName() . "</li>";
                     }
                 } else {

@@ -65,11 +65,14 @@ class Subject
      * @param string $studentNumber
      * @return \Student
      */
-    public function addStudent(string $studentName, string $studentNumber): Student
+    public function addStudent(string $studentName, string $studentNumber): Student|null
     {
-        $student = new Student($studentName, $studentNumber);
-        $this->students[] = $student;
-        return $student;
+        if (!$this->isStudentExists($studentNumber)) {
+            $student = new Student($studentName, $studentNumber);
+            $this->students[] = $student;
+            return $student;
+        }
+        return null;
     }
 
     // ToDo
