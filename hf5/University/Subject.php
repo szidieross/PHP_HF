@@ -38,9 +38,19 @@ class Subject
     {
         $this->code = $code;
     }
+
+    public function getStudents(): array
+    {
+        return $this->students;
+    }
+
+    public function setStudent($student): void
+    {
+        $this->students[] = $student;
+    }
     // TODO Generate constructor for all attributes. $students argument of the constructor can be empty
 
-    public function __construct(string $code, string $name, Student $students = [])
+    public function __construct(string $code, string $name, ?array $students=[])
     {
         $this->code = $code;
         $this->name = $name;
