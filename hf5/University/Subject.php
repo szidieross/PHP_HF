@@ -67,7 +67,6 @@ class Subject
      */
     public function addStudent(string $studentName, string $studentNumber): Student
     {
-        echo "adding student";
         $student = new Student($studentName, $studentNumber);
         $this->students[] = $student;
         return $student;
