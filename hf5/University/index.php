@@ -24,7 +24,8 @@ $uni->addStudentOnSubject("3", $student3);
 echo ($uni->print());
 
 // var_dump($subj2->getStudents());
-echo $uni->getNumberOfStudents() . "<br/>"; //not good yet
+echo "<h4>Number of Students: " . $uni->getNumberOfStudents() . "</h4>";
+
 var_dump($uni->getStudentsForSubject("3"));
 
 echo "</pre>";

@@ -70,11 +70,17 @@ class University extends AbstractUniversity
      */
     public function getNumberOfStudents(): int
     {
-        $totalNumber = 0;
+        $allStudents = [];
         foreach ($this->subjects as $subject) {
-            $totalNumber += count($subject->getStudents());
+            $students = $subject->getStudents();
+            foreach ($students as $student) {
+                $studentNumber = $student->getStudentNumber();
+                if (!in_array($studentNumber, $allStudents)) {
+                    $allStudents[] = $studentNumber;
+                }
+            }
         }
-        return $totalNumber;
+        return count($allStudents);
     }
 
     /**
@@ -90,7 +96,7 @@ class University extends AbstractUniversity
         $output = "<h2>University Data</h2>";
         if (count($this->subjects) > 0) {
             foreach ($this->subjects as $subject) {
-                $output .= "<h3>" . $subject->getName()."</h3><ol>";
+                $output .= "<h3>" . $subject->getName() . "</h3><ol>";
 
                 $students = $subject->getStudents();
                 if (count($students) > 0) {
