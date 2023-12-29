@@ -27,6 +27,7 @@ $uni = new University();
 
 $uni->addSubject("1", "Math");
 $uni->addStudentOnSubject("1", $student1);
+$uni->addStudentOnSubject("1", $student2);
 echo($uni->print());
 // echo "<br/>hi im percy jackson";
 

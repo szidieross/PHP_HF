@@ -20,7 +20,7 @@ class University extends AbstractUniversity
     public function addSubject(string $code, string $name): Subject
     {
         $subject = new Subject($code, $name);
-        $this->subjects[] = $subject;
+        $this->subjects[$code] = $subject;
         return $subject;
     }
 
