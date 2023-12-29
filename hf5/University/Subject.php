@@ -67,15 +67,21 @@ class Subject
      */
     public function addStudent(string $studentName, string $studentNumber): Student
     {
+        echo "adding student";
         $student = new Student($studentName, $studentNumber);
-        $this->students = $student;
+        $this->students[] = $student;
         return $student;
     }
 
     // ToDo
     private function isStudentExists(string $studentNumber): bool
     {
-        return 0;
+        foreach ($this->students as $student) {
+            if ($student->getStudentNumber() === $studentNumber) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

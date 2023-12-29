@@ -33,8 +33,19 @@ class University extends AbstractUniversity
      */
     public function addStudentOnSubject(string $subjectCode, Student $student)
     {
+        // var_dump($this->subjects);
+        // echo "subjectcode: " . $subjectCode;
+        // if (array_key_exists($subjectCode, $this->subjects)) {
+        //     $subject=$this->subjects[$subjectCode];
+        //     $studentName=$student->getName();
+        //     $studentNumber=$student->getStudentNumber();
+        //     $student=new Student($studentName,$studentNumber);
+        //     echo($student->getName());
+        //     $subject->addStudent($student);
+        // }
         if (array_key_exists($subjectCode, $this->subjects)) {
-            $this->subjects[$subjectCode] = $student;
+            $subject = $this->subjects[$subjectCode];
+            $subject->addStudent($student->getName(), $student->getStudentNumber());
         }
     }
 
@@ -76,13 +87,25 @@ class University extends AbstractUniversity
      */
     public function print()
     {
-        echo "hi";
-        foreach ($this->subjects as $subject) {
-            echo $subject->getName();
-            $students = $subject->getStudents();
-            foreach ($students as $student) {
-                echo $student->getName();
+        $output = "<h2>University Data</h2>";
+        if (count($this->subjects) > 0) {
+            foreach ($this->subjects as $subject) {
+                $output .= "<ol><b>" . $subject->getName()."</b>";
+
+                $students = $subject->getStudents();
+                if (count($students) > 0) {
+                    foreach ($students as $student) {
+                        echo $student->getName();
+                        $output .= "\t<li>" . $student->getName() . "</li>";
+                    }
+                } else {
+                    $output .= "\nNo students yet.";
+                }
+                $output .= "</ol>";
             }
+        } else {
+            $output = "We have no subjects or students yet.";
         }
+        return $output;
     }
 }

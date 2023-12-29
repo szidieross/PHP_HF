@@ -25,7 +25,7 @@ class Student
     {
         return $this->name;
     }
-    public function setName($name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -34,7 +34,7 @@ class Student
         return $this->studentNumber;
     }
 
-    public function setStudentNumber($studentNumber)
+    public function setStudentNumber(string $studentNumber): void
     {
         $this->studentNumber = $studentNumber;
     }
