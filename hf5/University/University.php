@@ -49,6 +49,15 @@ class University extends AbstractUniversity
         }
     }
 
+    public function deleteStudentOnSubject(string $subjectCode, Student $student)
+    {
+        if (array_key_exists($subjectCode, $this->subjects)) {
+            $subject = $this->subjects[$subjectCode];
+            $studentNumber=$student->getStudentNumber();
+            $subject->deleteStudent($studentNumber);
+        }
+    }
+
     /**
      * Method returns students for given subject
      *

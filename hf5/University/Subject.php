@@ -69,10 +69,23 @@ class Subject
     {
         if (!$this->isStudentExists($studentNumber)) {
             $student = new Student($studentName, $studentNumber);
-            $this->students[] = $student;
+            $this->students[$studentNumber] = $student;
             return $student;
         }
         return null;
+    }
+
+    public function deleteStudent(Student $student): void{
+        // if ($this->isStudentExists($studentNumber)) {
+            $studentNumber=$student->getStudentNumber();
+            var_dump($this->getStudents());
+            unset($this->students[$studentNumber]);
+            var_dump($this->getStudents());
+            echo "yep";
+        // }
+        // else{
+        //     echo "nope";
+        // }
     }
 
     // ToDo
