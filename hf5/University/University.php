@@ -90,7 +90,7 @@ class University extends AbstractUniversity
         $output = "<h2>University Data</h2>";
         if (count($this->subjects) > 0) {
             foreach ($this->subjects as $subject) {
-                $output .= "<ol><b>" . $subject->getName()."</b>";
+                $output .= "<h3>" . $subject->getName()."</h3><ol>";
 
                 $students = $subject->getStudents();
                 if (count($students) > 0) {
@@ -100,7 +100,7 @@ class University extends AbstractUniversity
                 } else {
                     $output .= "\nNo students yet.";
                 }
-                $output .= "</ol>";
+                $output .= "</ol><br/>";
             }
         } else {
             $output = "We have no subjects or students yet.";
