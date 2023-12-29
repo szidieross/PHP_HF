@@ -20,7 +20,7 @@ class University extends AbstractUniversity
     public function addSubject(string $code, string $name): Subject
     {
         $subject = new Subject($code, $name);
-        $this->subjects = $subject;
+        $this->subjects[] = $subject;
         return $subject;
     }
 
@@ -33,9 +33,9 @@ class University extends AbstractUniversity
      */
     public function addStudentOnSubject(string $subjectCode, Student $student)
     {
-        if (array_key_exists($subjectCode, $this->subjects))
-            ;
-        $this->subjects[$subjectCode] = $student;
+        if (array_key_exists($subjectCode, $this->subjects)) {
+            $this->subjects[$subjectCode] = $student;
+        }
     }
 
     /**
@@ -76,6 +76,7 @@ class University extends AbstractUniversity
      */
     public function print()
     {
+        echo "hi";
         foreach ($this->subjects as $subject) {
             echo $subject->getName();
             $students = $subject->getStudents();
