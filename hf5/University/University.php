@@ -91,6 +91,20 @@ class University extends AbstractUniversity
         return count($allStudents);
     }
 
+    public function deleteSubject(Subject $subject): void
+    {
+        $subjectCode = $subject->getCode();
+        if (array_key_exists($subjectCode, $this->subjects)) {
+            $subject = $this->subjects[$subjectCode];
+            $studentNumber = count($subject->getStudents());
+            if ($studentNumber > 0) {
+                echo $subject->getName() ." subject can't be deleted";
+            } else {
+                unset($this->subjects[$subjectCode]);
+            }
+        }
+    }
+
     /**
      * Method must iterate over $subjects, print the subject name then "-" 25 times,
      * then iterate over students of the subject and print student name and student number in format

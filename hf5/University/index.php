@@ -37,6 +37,9 @@ $subj2->deleteStudent($student1);
 // echo "<h2>deleting student " . $student4->getName() . " from " . $subj3->getName() . ".>/h2>";
 $uni->deleteStudentOnSubject("3",$student4);
 
+$uni->deleteSubject($subj1);
+$uni->deleteSubject($subj2);
+
 echo ($uni->print());
 
 echo "</pre>";
