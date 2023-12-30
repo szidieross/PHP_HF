@@ -41,6 +41,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
         if ($abstractFile['size'] > $maxFileSize) {
             $errors[] = "File size can't exceed 3MB";
         }
+
+        // $tempFilePath = '' . $abstractFile['tmp_name'];
+        // $destination = './files/' . $abstractFile['name'];
+
+        // if (move_uploaded_file($tempFilePath, $destination)) {
+        //     echo '<iframe src="' . $destination . '" width="100%" height="500px"></iframe>';
+        // }
     } else {
         $errors[] = "Error uploading file.";
     }
@@ -69,16 +76,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
         $errors[] = "You must agree to the terms and conditions.";
     }
 
-    echo "$firstName\n";
-    echo "$tshirt\n";
-    var_dump($attend);
-    var_dump($abstractFile);
-    echo "\n" . $terms;
-
     if (count($errors) > 0) {
         foreach ($errors as $error) {
             throw new Exception($error);
         }
+    } else {
+        echo "<table><tr><td>Firstname</td>";
+        echo "<td>$firstName</td></tr>";
+        echo "<tr><td>Lastname</td>";
+        echo "<td>$lastName</td></tr>";
+        echo "<tr><td>Email</td>";
+        echo "<td>$email</td></tr>";
+        echo "<tr><td>Attended Events</td>";
+        echo "<td>";
+        foreach ($attend as $event) {
+            echo "$event\t";
+        }
+        echo "</tr>";
+        echo "<tr><td>T-shirt</td>";
+        echo "<td>$tshirt</td></tr>";
+        echo "<tr><td>Abstract</td>";
+
+        $tempFilePath = '' . $abstractFile['tmp_name'];
+        $destination = './files/' . $abstractFile['name'];
+
+        if (move_uploaded_file($tempFilePath, $destination)) {
+            echo '<iframe src="' . $destination . '" width="100%" height="500px"></iframe>';
+        }
+
+        echo "</table";
     }
 }
 echo "</pre>";
