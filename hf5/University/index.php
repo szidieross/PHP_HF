@@ -11,10 +11,17 @@ echo "<h1>Note to self: add exceptions</h1>";
 
 $uni = new University();
 
+$students = [];
+
 $student1 = new Student("Annabeth", "001");
 $student2 = new Student("Percy", "002");
 $student3 = new Student('Charlie', '003');
 $student4 = new Student('Clarisse', '004');
+
+$students[] = $student1;
+$students[] = $student2;
+$students[] = $student3;
+// $students[] = $student4;
 
 $subj1 = $uni->addSubject("1", "Math");
 $subj2 = $uni->addSubject("2", "Physics");
@@ -52,5 +59,20 @@ echo ($student1->getGrade('1'));
 echo ($uni->print());
 
 echo $student1->printGrades();
+
+usort($students, function ($student1, $student2) {
+    if ($student1->getAvgGrade() > 0 && $student2->getAvgGrade() > 0) {
+        $avgGradeA = $student1->getAvgGrade();
+        $avgGradeB = $student2->getAvgGrade();
+
+        if ($avgGradeA == $avgGradeB) {
+            return 0;
+        }
+
+        return ($avgGradeA < $avgGradeB) ? 1 : -1;
+    }else{
+        echo "\nno grade";
+    }
+});
 
 echo "</pre>";
