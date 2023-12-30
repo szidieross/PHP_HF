@@ -10,6 +10,11 @@ class University extends AbstractUniversity
     public $subjects = [];
 
     /**
+     * @var Student[]
+     */
+    public $students = [];
+
+    /**
      * Method accepts the name and code of the Subject, creates instance of the class,
      * adds the instance in $subjects array and returns created instance
      *
@@ -98,11 +103,39 @@ class University extends AbstractUniversity
             $subject = $this->subjects[$subjectCode];
             $studentNumber = count($subject->getStudents());
             if ($studentNumber > 0) {
-                echo $subject->getName() ." subject can't be deleted";
+                echo $subject->getName() . " subject can't be deleted";
             } else {
                 unset($this->subjects[$subjectCode]);
             }
         }
+    }
+
+    public function sortStudentsByAvgGrade()
+    {
+        echo "<h1>sortStudentsByAvgGrade</h1>";
+        foreach ($this->subjects as $subject) {
+            $subjectStudents = $subject->getStudents();
+            foreach ($subjectStudents as $student) {
+                $studentNumber = $student->getStudentNumber();
+                $studentName = $student->getName();
+
+                if (!array_key_exists($studentNumber, $this->students)) {
+                    $this->students[$studentNumber] = $studentName;
+                    // echo $studentNumber . " - " . $studentName . " - ";
+                    // echo ($student instanceof Student)."\n";
+                    $avgGrade=$student->printGrades();
+                    echo $avgGrade;
+
+                }
+            }
+
+        }
+        // var_dump($this->students);
+
+        // foreach ($this->students as $student) {
+        //     $avg=$student->getAvgGrade();
+        //     echo $avg."\n";
+        // }
     }
 
     /**

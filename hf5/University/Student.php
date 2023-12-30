@@ -75,11 +75,15 @@ class Student
 
     public function printGrades(): string
     {
-        $output = $this->getName() . "'s grades:\nCourse Name - Course Grade";
+        $output = "\n" . $this->getName() . "'s grades:\nCourse Name - Course Grade";
 
-        foreach ($this->grades as $subjectCode => $grade) {
+        if (count($this->grades) > 0) {
+            foreach ($this->grades as $subjectCode => $grade) {
 
-            $output .= "\n" . $this->courses[$subjectCode] . "\t\t" . $grade;
+                $output .= "\n" . $this->courses[$subjectCode] . "\t\t" . $grade;
+            }
+        }else{
+            $output .= "\nNo grades yet.\n";
         }
 
         return $output;
