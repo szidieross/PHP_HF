@@ -13,15 +13,15 @@
 
     <form method="post" action="form1.php" enctype="multipart/form-data">
         <label for="fname"> First name:
-            <input type="text" name="firstName">
+            <input type="text" name="firstName" required>
         </label>
         <br><br>
         <label for="lname"> Last name:
-            <input type="text" name="lastName">
+            <input type="text" name="lastName" required>
         </label>
         <br><br>
         <label for="email"> E-mail:
-            <input type="text" name="email">
+            <input type="text" name="email" required>
         </label>
         <br><br>
         <label for="attend"> I will attend:<br>
@@ -45,7 +45,7 @@
             <input type="file" name="abstract" />
         </label>
         <br><br>
-        <input type="checkbox" name="terms" value="">I agree to terms & conditions.<br>
+        <input type="checkbox" name="terms" value="" required>I agree to terms & conditions.<br>
         <br><br>
         <input type="submit" name="submit" value="Send registration" />
     </form>
