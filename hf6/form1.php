@@ -31,9 +31,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
 
     if (isset($_FILES['abstract']) && $_FILES['abstract']['error'] === UPLOAD_ERR_OK) {
         $abstractFile = $_FILES['abstract'];
+
+        $fileExtension = pathinfo($abstractFile['name'], PATHINFO_EXTENSION);
+        if ($fileExtension !== "pdf") {
+            $errors[] = "Only PDF files are allowed to be uploaded";
+        }
+
+        $maxFileSize = 3 * 1024 * 1024;
+        if ($abstractFile['size'] > $maxFileSize) {
+            $errors[] = "File size can't exceed 3MB";
+        }
     } else {
         $errors[] = "Error uploading file.";
     }
+
+    // when uploading a picture
+    // if (isset($_FILES['abstract']) && $_FILES['abstract']['error'] === UPLOAD_ERR_OK) {
+    //     $abstractFile = $_FILES['abstract'];
+    //     $tempFilePath = $abstractFile['tmp_name'];
+
+    //     // Path where you want to save the uploaded file temporarily
+    //     $destination = './files/' . $abstractFile['name'];
+
+    //     // Move the uploaded file to the desired location
+    //     if (move_uploaded_file($tempFilePath, $destination)) {
+    //         // Display the uploaded image using an <img> tag
+    //         echo '<img src="' . $destination . '" alt="Uploaded Abstract Image">';
+    //     } else {
+    //         $errors[] = "Error moving the uploaded file.";
+    //     }
+    // } else {
+    //     $errors[] = "Error uploading file.";
+    // }
 
     $terms = isset($_POST["terms"]);
     if (!$terms) {
