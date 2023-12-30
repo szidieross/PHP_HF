@@ -1,5 +1,6 @@
 <?php
 require_once "AbstractUniversity.php";
+// require_once "Student.php";
 
 class University extends AbstractUniversity
 {
@@ -118,13 +119,15 @@ class University extends AbstractUniversity
             foreach ($subjectStudents as $student) {
                 $studentNumber = $student->getStudentNumber();
                 $studentName = $student->getName();
+                $avgGrade=$student->printGrades();
+                echo $avgGrade;
 
                 if (!array_key_exists($studentNumber, $this->students)) {
                     $this->students[$studentNumber] = $studentName;
                     // echo $studentNumber . " - " . $studentName . " - ";
                     // echo ($student instanceof Student)."\n";
-                    $avgGrade=$student->printGrades();
-                    echo $avgGrade;
+                    // $avgGrade=$student->printGrades();
+                    // echo $avgGrade;
 
                 }
             }

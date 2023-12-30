@@ -61,6 +61,7 @@ class Student
 
     public function getAvgGrade(): float
     {
+        var_dump($this->grades);
         $average = 0;
         $numOfGrades = count($this->grades);
         if ($numOfGrades > 0) {
@@ -85,6 +86,8 @@ class Student
         }else{
             $output .= "\nNo grades yet.\n";
         }
+        
+        var_dump($this->grades);
 
         return $output;
     }

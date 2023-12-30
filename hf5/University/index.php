@@ -51,6 +51,7 @@ echo "<h2>setting grade</h2>";
 
 $student1->setGrade($subj1, 10);
 $student1->setGrade($subj2, 9);
+$student1->setGrade($subj3, 9);
 echo ($student1->getGrade('1'));
 // echo "<br/>Avg: " . ($student1->getAvgGrade());
 // echo "<br/>Average grade: " . ($uni->getStudentAverageGrade($student1));
@@ -82,6 +83,8 @@ echo "\nAVG: ".$student1->getAvgGrade()."\n";
 // }
 
 // var_dump($students);
+
+echo "<h1>sfdgdgdgdfgdfg</h1>";
 
 $uni->sortStudentsByAvgGrade();
 
