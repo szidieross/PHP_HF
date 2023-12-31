@@ -106,14 +106,16 @@
             if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["submit"])) {
                 $abstract = isset($_FILES["abstract"]) ? $_FILES["abstract"] : '';
 
-                if (empty($abstract)) {
-                    echo "<div style='color:red;'>Please select you T-shirt size.</div>";
+                if (empty($abstract['name'])) {
+                    echo "<div style='color:red;'>Please select your abstract file.</div>";
                 }
             }
             ?>
         </label>
         <br><br>
-        <input type="checkbox" name="terms" value="<?php if(isset($_GET['terms'])) echo 'checked'; ?>">I agree to terms & conditions.<br>
+        <input type="checkbox" name="terms" <?php if (isset($_GET['terms']))
+            echo 'checked'; ?>>I agree to terms &
+        conditions.<br>
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["submit"])) {
             $terms = isset($_GET["terms"]) ? $_GET["terms"] : '';
