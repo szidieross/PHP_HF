@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Regisztracio</title>
+</head>
+
+<body>
+    <h3>Regisztráció</h3>
+
+    <form method="POST" action="form.php" enctype="multipart/form-data">
+        <label for="fname">Név:
+            <input type="text" name="firstName">
+        </label>
+        <br><br>
+        <label for="email">E-mail:
+            <input type="text" name="email">
+        </label>
+        <br><br>
+        <label for="password">Jelszó :
+            <input type="password" name="password">
+        </label>
+        <br><br>
+        <label for="confirmPassword">Jelszó megerősítése:
+            <input type="password" name="confirmPassword">
+        </label>
+        <br><br>
+        <label for="birthDate">Születési dátum:
+            <input type="date" name="birthDate">
+        </label>
+        <br><br>
+        <label>Nem:<br />
+            <input type="radio" name="gender" value="female" id="female">
+            <label for="female">Nő</label><br>
+            <input type="radio" name="gender" value="male" id="male">
+            <label for="male">Férfi</label><br>
+        </label>
+        <br><br>
+        <label for="interests">Érdeklődési területek:<br />
+            <input type="checkbox" name="interests[]" value="interest1">Sport<br />
+            <input type="checkbox" name="interests[]" value="interest1">Művészet<br />
+            <input type="checkbox" name="interests[]" value="interest1">Tudomány<br />
+        </label>
+        <br><br>
+        <label for="country">Ország:
+            <select name="country">
+                <option value="unitedKingdom">United Kingdom</option>
+                <option value="placeholder">Pease select your country</option>
+                <option value="france">France</option>
+                <option value="norway">Norway</option>
+                <option value="hungary">Hungary</option>
+                <option value="romania">Romania</option>
+            </select>
+        </label>
+        <br><br>
+
+        <input type="submit" name="registration" value="Send registration" />
+    </form>
+</body>
+
+</html>
