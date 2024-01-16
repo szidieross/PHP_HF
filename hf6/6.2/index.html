@@ -10,8 +10,8 @@
     <h3>Regisztráció</h3>
 
     <form method="POST" action="form.php" enctype="multipart/form-data">
-        <label for="fname">Név:
-            <input type="text" name="firstName">
+        <label for="name">Név:
+            <input type="text" name="name">
         </label>
         <br><br>
         <label for="email">E-mail:
@@ -37,20 +37,20 @@
             <label for="male">Férfi</label><br>
         </label>
         <br><br>
-        <label for="interests">Érdeklődési területek:<br />
-            <input type="checkbox" name="interests[]" value="interest1">Sport<br />
-            <input type="checkbox" name="interests[]" value="interest1">Művészet<br />
-            <input type="checkbox" name="interests[]" value="interest1">Tudomány<br />
+        <p>Érdeklődési területek:</p>
+            <input type="checkbox" name="interests[]" id="sport" value="Sport">Sport<br />
+            <input type="checkbox" name="interests[]" id="art" value="Művészet">Művészet<br />
+            <input type="checkbox" name="interests[]" id="sciense" value="Tudomány">Tudomány<br />
         </label>
         <br><br>
         <label for="country">Ország:
             <select name="country">
-                <option value="unitedKingdom">United Kingdom</option>
-                <option value="placeholder">Pease select your country</option>
-                <option value="france">France</option>
-                <option value="norway">Norway</option>
-                <option value="hungary">Hungary</option>
-                <option value="romania">Romania</option>
+                <option value="">Pease select your country</option>
+                <option value="united Kingdom">United Kingdom</option>
+                <option value="France">France</option>
+                <option value="Norway">Norway</option>
+                <option value="Hungary">Hungary</option>
+                <option value="Romania">Romania</option>
             </select>
         </label>
         <br><br>
