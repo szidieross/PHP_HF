@@ -37,6 +37,7 @@ if (isset($_GET['submit_guess'])) {
             echo "<br>New game";
             
             setcookie("rnd_number", "", time() - 3600);
+            setcookie("rnd_number", rand(1, 10), time() + 3600);
         } else if($guess < $_COOKIE["rnd_number"]) {
             echo "It is bigger than $guess, try again!";
         } else  {
