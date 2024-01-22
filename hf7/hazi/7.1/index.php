@@ -1,19 +1,43 @@
 <?php
-session_start();
+// session_start();
 
-if (!isset($_SESSION["rnd_number"])) {
-    $_SESSION["rnd_number"] = rand(1, 10);
+// if (!isset($_SESSION["rnd_number"])) {
+//     $_SESSION["rnd_number"] = rand(1, 10);
+// }
+
+// if (isset($_GET['submit_guess'])) {
+//     $guess = isset($_GET['rnd']) ? (int)$_GET['rnd'] : 0;
+
+//     if ($guess >= 1 && $guess <= 10) {
+//         if ($guess == $_SESSION["rnd_number"]) {
+//             echo "Congratulations! The correct number is: " . $_SESSION["rnd_number"];
+//             echo "<br>New game";
+//             unset($_SESSION['rnd_number']);
+//         } else if($guess < $_SESSION["rnd_number"]) {
+//             echo "It is bigger than $guess, try again!";
+//         } else  {
+//             echo "It is smaller than $guess, try again!";
+//         }
+//     } else {
+//         echo "Please enter a number between 1 and 10.";
+//     }
+// }
+
+
+if (!isset($_COOKIE["rnd_number"])) {
+    setcookie("rnd_number", rand(1, 10), time() + 3600);
 }
 
 if (isset($_GET['submit_guess'])) {
     $guess = isset($_GET['rnd']) ? (int)$_GET['rnd'] : 0;
 
     if ($guess >= 1 && $guess <= 10) {
-        if ($guess == $_SESSION["rnd_number"]) {
-            echo "Congratulations! The correct number is: " . $_SESSION["rnd_number"];
+        if ($guess == $_COOKIE["rnd_number"]) {
+            echo "Congratulations! The correct number is: " . $_COOKIE["rnd_number"];
             echo "<br>New game";
-            unset($_SESSION['rnd_number']);
-        } else if($guess < $_SESSION["rnd_number"]) {
+            
+            setcookie("rnd_number", "", time() - 3600);
+        } else if($guess < $_COOKIE["rnd_number"]) {
             echo "It is bigger than $guess, try again!";
         } else  {
             echo "It is smaller than $guess, try again!";
