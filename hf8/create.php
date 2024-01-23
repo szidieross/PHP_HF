@@ -1,13 +1,13 @@
 <?php
 include("dbcon.php");
 
-$sql = "DROP DATABASE IF EXISTS $dbname";
+// $sql = "DROP DATABASE IF EXISTS $dbname";
 
-if ($conn->query($sql) === true) {
-    echo "A $dbname adatbázis sikeresen törölve";
-} else {
-    echo "Hiba az adatbázis törlése során: " . $conn->error;
-}
+// if ($conn->query($sql) === true) {
+//     echo "A $dbname adatbázis sikeresen törölve";
+// } else {
+//     echo "Hiba az adatbázis törlése során: " . $conn->error;
+// }
 
 $sql = "CREATE DATABASE IF NOT EXISTS $dbname";
 
@@ -22,7 +22,7 @@ $conn->select_db($dbname);
 $table = "hallgatok";
 
 $sql = "CREATE TABLE IF NOT EXISTS $table (
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     nev VARCHAR(255) NOT NULL,
     szak VARCHAR(255) NOT NULL,
     atlag DOUBLE NOT NULL
@@ -41,19 +41,18 @@ if (!$stmt->execute()) {
 echo "A 'hallgatok' tábla sikeresen létrehozva";
 
 // hallgatok beszurasa
-$sql = "INSERT INTO $table (id, nev, szak, atlag) VALUES (?, ?, ?, ?)";
+$sql = "INSERT INTO $table (nev, szak, atlag) VALUES (?, ?, ?)";
 $stmt = $conn->prepare($sql);
 
 if ($stmt === false) {
     die("Hiba az INSERT előkészítése során: " . $conn->error);
 }
 
-$id = 1;
 $nev = "Luke";
-$szak = "Informatika";
+$szak = "informatika";
 $atlag = 7.5;
 
-$stmt->bind_param("issd", $id, $nev, $szak, $atlag);
+$stmt->bind_param("ssd", $nev, $szak, $atlag);
 
 if (!$stmt->execute()) {
     die("Hiba az adat beszúrása során: " . $stmt->error);
@@ -61,12 +60,11 @@ if (!$stmt->execute()) {
 
 echo "A hallgató sikeresen beszúrva";
 
-$id = 2;
 $nev = "Mary";
 $szak = "informatika";
-$atlag = "9.4";
+$atlag = 9.4;
 
-$stmt->bind_param("issd", $id, $nev, $szak, $atlag);
+$stmt->bind_param("ssd", $nev, $szak, $atlag);
 
 if (!$stmt->execute()) {
     die("Hiba az adat beszúrása során: " . $stmt->error);

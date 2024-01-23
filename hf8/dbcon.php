@@ -11,6 +11,8 @@ if ($conn->connect_error) {
     die("Failed to connect to database: " . $conn->connect_error);
 }
 
+$conn->select_db($dbname);
+
 // $sql = "DROP DATABASE IF EXISTS $dbname";
 
 // if ($conn->query($sql) === true) {
