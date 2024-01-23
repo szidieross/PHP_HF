@@ -1,6 +1,7 @@
 <?php
 
-require_once("dbcon.php");
+// require_once("dbcon.php");
+include("dbcon.php");
 
 $servername = "localhost";
 $username = "root";
