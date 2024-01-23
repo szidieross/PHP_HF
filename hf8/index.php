@@ -1,24 +1,27 @@
 <?php
+
+require_once("dbcon.php");
+
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "egyetem";
 
 // Kapcsolat létrehozása
-$conn = new mysqli($servername, $username, $password);
+// $conn = new mysqli($servername, $username, $password);
 
-// Kapcsolat ellenőrzése
-if ($conn->connect_error) {
-    die("Sikertelen kapcsolódás: " . $conn->connect_error);
-}
+// // Kapcsolat ellenőrzése
+// if ($conn->connect_error) {
+//     die("Sikertelen kapcsolódás: " . $conn->connect_error);
+// }
 
-// Adatbázis kiválasztása vagy létrehozása
-$sql = "CREATE DATABASE IF NOT EXISTS egyetem";
-if ($conn->query($sql) === TRUE) {
-    echo "Az adatbázis létrehozva sikeresen!<br>";
-} else {
-    echo "Hiba az adatbázis létrehozásakor: " . $conn->error;
-}
+// // Adatbázis kiválasztása vagy létrehozása
+// $sql = "CREATE DATABASE IF NOT EXISTS egyetem";
+// if ($conn->query($sql) === TRUE) {
+//     echo "Az adatbázis létrehozva sikeresen!<br>";
+// } else {
+//     echo "Hiba az adatbázis létrehozásakor: " . $conn->error;
+// }
 
 $conn->select_db("egyetem");
 
