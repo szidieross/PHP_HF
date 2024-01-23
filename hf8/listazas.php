@@ -61,6 +61,10 @@ if ($result === false) {
                     <td>
                         <?php echo $row["atlag"] ?>
                     </td>
+                    <td>
+                    <a href="update.php?id=<?php echo $row["id"]; ?>">Szerkesztés</a>
+                        <!-- <a href="delete.php?id=<?php echo $row["id"]; ?>">Törlés</a> -->
+                    </td>
                 </tr>
 
             <?php endwhile; ?>

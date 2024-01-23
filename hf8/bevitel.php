@@ -43,9 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["add"])) {
     <h2>Bevitel</h2>
 
     <form method="POST" action="">
-        Nev: <input type="text" name="nev" id="">
-        Szak: <input type="text" name="szak" id="">
-        Atlag: <input type="number" name="atlag" id="" step="0.01">
+        Nev: <input type="text" name="nev" id="" required><br><br>
+        Szak: <input type="text" name="szak" id="" required><br><br>
+        Atlag: <input type="number" name="atlag" id="" step="0.01" required><br><br>
         <input type="submit" name="add" value="Hozzaad">
     </form>
 </body>
