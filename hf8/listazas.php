@@ -29,6 +29,10 @@ if ($result === false) {
 </head>
 
 <body>
+    <br>
+    <a href="bevitel.php"><button>Hallgato hozzaadasa</button></a>
+
+
     <h2>Hallgatok Listazasa</h2>
 
     <?php if ($result->num_rows > 0) ?>

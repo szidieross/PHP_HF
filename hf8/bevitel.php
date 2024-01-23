@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["add"])) {
     $szak = $_POST['szak'];
     $atlag = $_POST['atlag'];
 
-    $sql = "INSERT INTO $table (nev, szak, atlag) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO hallgatok (nev, szak, atlag) VALUES (?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
 
@@ -37,6 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["add"])) {
 </head>
 
 <body>
+    <br>
+    <a href="index.php"><button>Jelenlegi hallgatok</button></a>
+
     <h2>Bevitel</h2>
 
     <form method="POST" action="">

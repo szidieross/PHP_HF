@@ -41,36 +41,36 @@ if (!$stmt->execute()) {
 echo "A 'hallgatok' tábla sikeresen létrehozva";
 
 // hallgatok beszurasa
-$sql = "INSERT INTO $table (nev, szak, atlag) VALUES (?, ?, ?)";
-$stmt = $conn->prepare($sql);
+// $sql = "INSERT INTO $table (nev, szak, atlag) VALUES (?, ?, ?)";
+// $stmt = $conn->prepare($sql);
 
-if ($stmt === false) {
-    die("Hiba az INSERT előkészítése során: " . $conn->error);
-}
+// if ($stmt === false) {
+//     die("Hiba az INSERT előkészítése során: " . $conn->error);
+// }
 
-$nev = "Luke";
-$szak = "informatika";
-$atlag = 7.5;
+// $nev = "Luke";
+// $szak = "informatika";
+// $atlag = 7.5;
 
-$stmt->bind_param("ssd", $nev, $szak, $atlag);
+// $stmt->bind_param("ssd", $nev, $szak, $atlag);
 
-if (!$stmt->execute()) {
-    die("Hiba az adat beszúrása során: " . $stmt->error);
-}
+// if (!$stmt->execute()) {
+//     die("Hiba az adat beszúrása során: " . $stmt->error);
+// }
 
-echo "A hallgató sikeresen beszúrva";
+// echo "A hallgató sikeresen beszúrva";
 
-$nev = "Mary";
-$szak = "informatika";
-$atlag = 9.4;
+// $nev = "Mary";
+// $szak = "informatika";
+// $atlag = 9.4;
 
-$stmt->bind_param("ssd", $nev, $szak, $atlag);
+// $stmt->bind_param("ssd", $nev, $szak, $atlag);
 
-if (!$stmt->execute()) {
-    die("Hiba az adat beszúrása során: " . $stmt->error);
-}
+// if (!$stmt->execute()) {
+//     die("Hiba az adat beszúrása során: " . $stmt->error);
+// }
 
-echo "A hallgató sikeresen beszúrva";
+// echo "A hallgató sikeresen beszúrva";
 
 $stmt->close();
 $conn->close();
