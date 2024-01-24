@@ -1,8 +1,8 @@
 <?php
-include("dbcon.php");
+// include("dbcon.php");
 include("users.php");
 
-if (isset($_POST["login"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST["login"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
 

@@ -1,24 +1,6 @@
 <?php
 include("dbcon.php");
 
-// $sql = "DROP DATABASE IF EXISTS $dbname";
-
-// if ($conn->query($sql) === true) {
-//     echo "A $dbname adatbázis sikeresen törölve";
-// } else {
-//     echo "Hiba az adatbázis törlése során: " . $conn->error;
-// }
-
-$sql = "CREATE DATABASE IF NOT EXISTS $dbname";
-
-if ($conn->query($sql) === true) {
-    echo "A $dbname adatbázis sikeresen létrehozva";
-} else {
-    echo "Hiba az adatbázis létrehozása során: " . $conn->error;
-}
-
-$conn->select_db($dbname);
-
 $table = "hallgatok";
 
 $sql = "CREATE TABLE IF NOT EXISTS $table (

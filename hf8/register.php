@@ -1,6 +1,15 @@
 <?php
-include("dbcon.php");
+// include("dbcon.php");
 include("users.php");
+
+if (isset($_POST["register"]) && $_SERVER['REQUEST_METHOD'] === "POST") {
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+    $sql="INSERT INTO users () VALUES (?, ?, ?)";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -19,8 +28,8 @@ include("users.php");
     <h2>Regisztralj</h2>
 
     <form method="POST" action="">
-        Email: <input type="email" name="eail" id=""><br><br>
         Felhasznalonev: <input type="text" name="username" id=""><br><br>
+        Email: <input type="email" name="email" id=""><br><br>
         Jelszo: <input type="password" name="password" id=""><br><br>
         <input type="submit" name="register" value="Register">
     </form>
