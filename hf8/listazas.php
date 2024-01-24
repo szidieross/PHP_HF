@@ -63,6 +63,8 @@ if ($result === false) {
                     </td>
                     <td>
                         <a href="update.php?id=<?php echo $row["id"]; ?>">Szerkesztés</a>
+                    </td>
+                    <td>
                         <a href="delete.php?id=<?php echo $row["id"]; ?>">Törlés</a>
                     </td>
                 </tr>
