@@ -9,6 +9,8 @@ class Transaction
     private string $transactionDate;
     private Database $db;
 
+    private Customer $user;
+
     public function __construct(int $id, int $senderId, int $receiverId, float $amount, DateTime $transactionDate, Database $db)
     {
         $this->id = $id;
@@ -44,13 +46,14 @@ class Transaction
         if ($stmt === false) {
             die("Hiba lekerdezes elokeszitesekor: " . $conn->error);
         }
-        $stmt->bind_param("ii", $this->senderId, $this->receiverId);
+        $stmt->bind_param("ii", $customer_id, $customer_id);
         if (!$stmt->execute()) {
             die("Hiba lekerdezeskor: " . $stmt->error);
         }
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {
             $rows = $result->fetch_all(MYSQLI_ASSOC);
+            
             echo "<h3>Transactions:</h3>";
             foreach ($rows as $row) {
                 echo "Transaction: id={$row['id']}, senderId={$row['senderId']}, receiverId={$row['receiverId']}, amount={$row['amount']}, transaction date={$row['transaction_date']}<br/>";

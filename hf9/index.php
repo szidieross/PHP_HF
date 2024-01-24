@@ -34,3 +34,4 @@ $tr = new Transaction(1, 1, 2, 345, new DateTime(), $db1);
 $tr = new Transaction(2, 1, 3, 345, new DateTime(), $db1);
 
 $tr->getByCustomer(1);
+$tr->getByCustomer(2);
