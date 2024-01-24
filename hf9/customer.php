@@ -113,7 +113,23 @@ class Customer
 
     public function getByID(string $customer_id)
     {
-
+        $db = $this->db;
+        $conn = $db->getConnection();
+        $sql = "SELECT id, username FROM customers WHERE id=?";
+        $stmt = $conn->prepare($sql);
+        if ($stmt === false) {
+            die("Hiba a lekerdezes elokeszitese soran: " . $conn->error);
+        }
+        $stmt->bind_param("i", $customer_id);
+        if (!$stmt->execute()) {
+            die("Hiba lekerdezeskor: " . $stmt->error);
+        }
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            echo "<br/>" . $this;
+        } else {
+            echo "<br/>Felhasznalonev nem talalhato.";
+        }
     }
 
     public function getUsername()
