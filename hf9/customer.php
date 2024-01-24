@@ -22,6 +22,28 @@ class Customer
 
         $conn = $db->getConnection();
 
+        $sql = "SELECT username FROM customers WHERE username=?";
+
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt === false) {
+            die("HIba lekerdezes elokeszitesekor: " . $conn->error);
+        }
+
+        $stmt->bind_param("s", $username);
+
+        if (!$stmt->execute()) {
+            die("Hiba lekerdezeskor: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            // $row=$result->fetch_assoc();
+            // $foundUsername=$row["username"];
+
+            die("A $username felhasznalonev mar letezik, kerem valasszon masikat");
+        }
+
         $sql = "INSERT INTO customers (username, password, balance) VALUES ( ?, ?, ?)";
 
         $stmt = $conn->prepare($sql);
