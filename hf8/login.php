@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // include("dbcon.php");
 include("users.php");
 
@@ -32,8 +34,9 @@ if (isset($_POST["login"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         if (password_verify($password, $row['password'])) {
             echo "Sikeres bejelentkezes";
 
-            session_start();
             $_SESSION["username"] = $username;
+            // setcookie("username", $username, time() + (86400 * 30));
+
             header("Location: index.php");
         } else {
             echo "Hibas jelszo";

@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+// session_start();
 
 include("dbcon.php");
 
@@ -19,12 +19,11 @@ if ($result === false) {
     die("Hiba a lekérdezés során: " . $conn->error);
 }
 
-
-
 // logout
 
 if (isset($_POST['logout'])) {
     unset($_SESSION["username"]);
+    // setcookie("username", $username, time() - 3600);
 
     header("Location: login.php");
     session_destroy();
