@@ -1,7 +1,12 @@
 <?php
 
 include("database.php");
+include("customer.php");
 
-$db=new Database("localhost","root", "", "testingidkwhat");
+$db1=new Database("localhost","root", "", "testingidkwhat");
 
-$db->connect();
+$db1->connect();
+
+$customer1=new Customer(1,"Anna","anna",100,$db1);
+
+$customer1->getByUsername("Anna");
