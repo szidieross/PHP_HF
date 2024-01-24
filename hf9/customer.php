@@ -38,13 +38,10 @@ class Customer
 
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {
-            // $row=$result->fetch_assoc();
-            // $foundUsername=$row["username"];
-
             die("A $username felhasznalonev mar letezik, kerem valasszon masikat");
         }
 
-        $sql = "INSERT INTO customers (username, password, balance) VALUES ( ?, ?, ?)";
+        $sql = "INSERT INTO customers (id, username, password, balance) VALUES (?, ?, ?, ?)";
 
         $stmt = $conn->prepare($sql);
 
@@ -52,7 +49,7 @@ class Customer
             die("Hiba costumer hozzaadasanak elokeszitesenel: " . $conn->error);
         }
 
-        $stmt->bind_param("ssd", $username, $password, $balance);
+        $stmt->bind_param("issd", $id, $username, $password, $balance);
 
         if (!$stmt->execute()) {
             die("Hiba costumer hozzaadasa soran: " . $stmt->error);

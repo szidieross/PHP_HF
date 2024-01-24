@@ -49,7 +49,7 @@ class Database
         // customer tabla hozzaadasa
 
         $sql = "CREATE TABLE IF NOT EXISTS customers(
-            id INT PRIMARY KEY AUTO_INCREMENT,
+            id INT PRIMARY KEY,
             username VARCHAR(255) NOT NULL,
             password VARCHAR(255) NOT NULL,
             balance INT
@@ -68,7 +68,7 @@ class Database
         // transactions tabla letrehozasa
 
         $sql = "CREATE TABLE IF NOT EXISTS transactions(
-            id INT PRIMARY KEY AUTO_INCREMENT,
+            id INT PRIMARY KEY,
             senderId INT NOT NULL,
             receiverId INT NOT NULL,
             amount FLOAT NOT NULL,
