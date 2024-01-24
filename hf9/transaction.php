@@ -53,7 +53,7 @@ class Transaction
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {
             $rows = $result->fetch_all(MYSQLI_ASSOC);
-            
+
             echo "<h3>Transactions:</h3>";
             foreach ($rows as $row) {
                 echo "Transaction: id={$row['id']}, senderId={$row['senderId']}, receiverId={$row['receiverId']}, amount={$row['amount']}, transaction date={$row['transaction_date']}<br/>";
@@ -65,8 +65,9 @@ class Transaction
         $stmt->close();
         $conn->close();
     }
-    public function updatebalance(int $customer_id, float $amount)
+    public function updateBalance(int $customer_id, float $amount)
     {
+
     }
     public function create(int $senderId, int $receiverId, float $amount)
     {
