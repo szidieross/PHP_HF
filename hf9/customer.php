@@ -66,7 +66,7 @@ class Customer
 
     public function updateBalance(float $amount)
     {
-        $this->balance = $amount;
+        $this->balance += $amount;
     }
 
     public function getBalance()
@@ -98,12 +98,13 @@ class Customer
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $this->id = $row["id"];
-            $this->username = $row["username"];
-            $this->balance = $row["balance"];
+            // $row = $result->fetch_assoc();
+            // $this->id = $row["id"];
+            // $this->username = $row["username"];
+            // $this->balance = $row["balance"];
+            echo "<br/>" . $this;
         } else {
-            echo "Felhasznalonev nem talalhato.";
+            echo "<br/>Felhasznalonev nem talalhato.";
         }
 
         $stmt->close();
@@ -118,5 +119,10 @@ class Customer
     public function getUsername()
     {
         return $this->username;
+    }
+
+    public function __toString()
+    {
+        return "Customer: id=$this->id, username=$this->username, balance=$this->balance";
     }
 }
