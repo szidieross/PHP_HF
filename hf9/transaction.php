@@ -37,11 +37,40 @@ class Transaction
 
     public function getByCustomer(int $customer_id)
     {
+        $db = $this->db;
+        $conn = $db->getConnection();
+        $sql = "SELECT id, senderId, receiverId, amount, transaction_date FROM transactions WHERE senderId=? OR receiverId=?";
+        $stmt = $conn->prepare($sql);
+        if ($stmt === false) {
+            die("Hiba lekerdezes elokeszitesekor: " . $conn->error);
+        }
+        $stmt->bind_param("ii", $this->senderId, $this->receiverId);
+        if (!$stmt->execute()) {
+            die("Hiba lekerdezeskor: " . $stmt->error);
+        }
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $rows = $result->fetch_all(MYSQLI_ASSOC);
+            echo "<h3>Transactions:</h3>";
+            foreach ($rows as $row) {
+                echo "Transaction: id={$row['id']}, senderId={$row['senderId']}, receiverId={$row['receiverId']}, amount={$row['amount']}, transaction date={$row['transaction_date']}<br/>";
+            }
+        } else {
+            echo "No transactions for this customer";
+        }
+
+        $stmt->close();
+        $conn->close();
     }
     public function updatebalance(int $customer_id, float $amount)
     {
     }
     public function create(int $senderId, int $receiverId, float $amount)
     {
+    }
+
+    public function __toString()
+    {
+        return "Transaction: id=$this->id, senderId=$this->senderId, receiverId=$this->receiverId, amount=$this->amount, transaction date=$this->transactionDate";
     }
 }

@@ -30,4 +30,7 @@ $customer->getByUsername("emoke");
 
 echo "<br/>" . $customer->getUsername();
 
-$tr1 = new Transaction(1, 1, 3, 345, new DateTime(), $db1);
+$tr = new Transaction(1, 1, 2, 345, new DateTime(), $db1);
+$tr = new Transaction(2, 1, 3, 345, new DateTime(), $db1);
+
+$tr->getByCustomer(1);
