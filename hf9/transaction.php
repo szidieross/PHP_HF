@@ -7,9 +7,9 @@ class Transaction
     private int $receiverId;
     private int $id;
     private DateTime $transactionDate;
-    private string $db;
+    private Database $db;
 
-    public function __construct($id, $senderId, $receiverId, $amount, $transactionDate, $db)
+    public function __construct(int $id, int $senderId, int $receiverId, float $amount, DateTime $transactionDate, Database $db)
     {
         $this->id = $id;
         $this->senderId = $senderId;
@@ -17,6 +17,10 @@ class Transaction
         $this->amount = $amount;
         $this->transactionDate = $transactionDate;
         $this->db = $db;
+
+        $conn = $db->getConnection();
+
+        $sql = "INSERT INTO transactions (senderId, receiverId, amount, transaction_date)";
     }
 
     public function getByCustomer(int $customer_id)

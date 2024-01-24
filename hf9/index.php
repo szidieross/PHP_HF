@@ -9,4 +9,8 @@ $db1->connect();
 
 $customer1=new Customer(1,"anna","anna",100,$db1);
 
-$customer1->getByUsername("Anna");
+$customer1->getByUsername("anna");
+
+$customer1=new Customer(1,"emoke","emoke",100,$db1);
+
+$customer1->getByUsername("emoke");

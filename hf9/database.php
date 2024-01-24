@@ -30,10 +30,11 @@ class Database
     {
         $conn = new mysqli($this->host, $this->username, $this->password);
 
-        // $sql = "DROP DATABASE IF EXISTS $this->database";
-        // if ($conn->query($sql) === false) {
-        //     throw new Exception("Error dropping the database $this->database: " . $conn->error);
-        // }
+        // just to help me clear up data
+        $sql = "DROP DATABASE IF EXISTS $this->database";
+        if ($conn->query($sql) === false) {
+            throw new Exception("Error dropping the database $this->database: " . $conn->error);
+        }
 
         $sql = "CREATE DATABASE IF NOT EXISTS $this->database";
 
