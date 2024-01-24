@@ -6,18 +6,40 @@ if (isset($_POST["login"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    $sql="SELECT username, password FROM users WHERE username = ?";
-
-    $stmt=$conn->prepare($sql);
-
-    if($stmt===false){
-        die("Hiba a lekerdezes elokeszitese soran: ".$conn->error);
+    if (empty($username) || empty($password)) {
+        die("Hiba: a mezok kitoltese kotelezo!");
     }
 
-    $stmt->bind_param("s",$username);
+    $sql = "SELECT username, password FROM users WHERE username = ?";
 
-    if(!$stmt->execute()){
-        die("Hiba a lekerdezes soran: ".$conn->error);
+    $stmt = $conn->prepare($sql);
+
+    if ($stmt === false) {
+        die("Hiba a lekerdezes elokeszitese soran: " . $conn->error);
+    }
+
+    $stmt->bind_param("s", $username);
+
+    if (!$stmt->execute()) {
+        die("Hiba a lekerdezes soran: " . $conn->error);
+    }
+
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+
+        if (password_verify($password, $row['password'])) {
+            echo "Sikeres bejelentkezes";
+
+            session_start();
+            $_SESSION["username"] = $username;
+            header("Location: index.php");
+        } else {
+            echo "Hibas jelszo";
+        }
+    } else {
+        echo "Felhasznalonev nem talalhato.";
     }
 }
 ?>
@@ -37,8 +59,8 @@ if (isset($_POST["login"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
     <h2>Jelentkezz be</h2>
 
     <form method="POST" action="">
-        Felhasznalonev: <input type="text" name="username" id=""><br><br>
-        Jelszo: <input type="password" name="password" id=""><br><br>
+        Felhasznalonev: <input type="text" name="username" id="" required><br><br>
+        Jelszo: <input type="password" name="password" id="" required><br><br>
         <input type="submit" name="login" value="Login">
     </form>
 </body>

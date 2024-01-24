@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include("dbcon.php");
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -17,6 +19,18 @@ if ($result === false) {
     die("Hiba a lekérdezés során: " . $conn->error);
 }
 
+
+
+// logout
+
+if (isset($_POST['logout'])) {
+    unset($_SESSION["username"]);
+
+    header("Location: login.php");
+    session_destroy();
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +43,9 @@ if ($result === false) {
 </head>
 
 <body>
+    <form method="POST" action="">
+        <input type="submit" name="logout" value="Logout">
+    </form>
     <br>
     <a href="bevitel.php"><button>Hallgato hozzaadasa</button></a>
 
@@ -43,6 +60,8 @@ if ($result === false) {
                 <th>Nev</th>
                 <th>Szak</th>
                 <th>Atlag</th>
+                <th>Szerkesztes</th>
+                <th>Torles</th>
             </tr>
         </thead>
         <tbody>
