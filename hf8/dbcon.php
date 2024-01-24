@@ -23,9 +23,7 @@ if ($conn->connect_error) {
 
 $sql = "CREATE DATABASE IF NOT EXISTS $dbname";
 
-if ($conn->query($sql) === true) {
-    echo "A $dbname adatbázis sikeresen létrehozva";
-} else {
+if ($conn->query($sql) === false) {
     echo "Hiba az adatbázis létrehozása során: " . $conn->error;
 }
 

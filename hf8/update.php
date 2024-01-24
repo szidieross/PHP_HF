@@ -43,8 +43,6 @@ if (isset($_POST['update']) && $_SERVER["REQUEST_METHOD"] == "POST") {
         die("Hiba az adat frissítése során: " . $stmt->error);
     }
 
-    echo "A hallgató sikeresen frissítve!";
-
     $stmt->close();
 
     header("Location: index.php");

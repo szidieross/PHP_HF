@@ -6,7 +6,19 @@ if (isset($_POST["login"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    echo "Hello " . $username;
+    $sql="SELECT username, password FROM users WHERE username = ?";
+
+    $stmt=$conn->prepare($sql);
+
+    if($stmt===false){
+        die("Hiba a lekerdezes elokeszitese soran: ".$conn->error);
+    }
+
+    $stmt->bind_param("s",$username);
+
+    if(!$stmt->execute()){
+        die("Hiba a lekerdezes soran: ".$conn->error);
+    }
 }
 ?>
 

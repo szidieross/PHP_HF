@@ -20,7 +20,10 @@ if (!$stmt->execute()) {
     die("Hiba a $table tábla létrehozása során: " . $stmt->error);
 }
 
-echo "A 'hallgatok' tábla sikeresen létrehozva";
+// echo "A 'hallgatok' tábla sikeresen létrehozva";
+
+
+
 
 // hallgatok beszurasa
 // $sql = "INSERT INTO $table (nev, szak, atlag) VALUES (?, ?, ?)";

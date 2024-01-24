@@ -18,7 +18,7 @@ if (!$stmt->execute()) {
     die("Hiba a 'users' tábla létrehozása során: " . $stmt->error);
 }
 
-echo "A 'users' tábla sikeresen létrehozva";
+// echo "A 'users' tábla sikeresen létrehozva";
 
 
 ?>

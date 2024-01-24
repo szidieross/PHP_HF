@@ -20,7 +20,5 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
         die("Hiba az adat törlése során: " . $stmtDelete->error);
     }
 
-    echo "A hallgató sikeresen törölve!";
-
     header("Location: index.php");
 }
