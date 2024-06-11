@@ -32,11 +32,8 @@
                 } else {
                     $table .= "<td> $szorzat </td>";
                 }
-                // echo "$szorzat ";
             }
             $table .= "</tr>";
-
-            // echo "<br>";
         }
         $table .= "</table>";
         return $table;
@@ -86,7 +83,6 @@
 
     $szinek = array('A' => 'Kek', 'B' => 'Zold', 'c' => 'Piros');
 
-    //classic
     function lower_upper_case($array, $to_upper_case)
     {
         $transformed_array = array();
@@ -108,7 +104,6 @@
     var_dump(lower_upper_case($szinek, "nagybetus"));
     echo "<br><br>";
 
-    //array_map
     
     function to_lower_case($value)
     {

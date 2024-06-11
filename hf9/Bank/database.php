@@ -65,8 +65,6 @@ class Database
             die("Hiba customers tabla letrehozasanal: " . $stmt->error);
         }
 
-        // transactions tabla letrehozasa
-
         $sql = "CREATE TABLE IF NOT EXISTS transactions(
             id INT PRIMARY KEY,
             senderId INT NOT NULL,

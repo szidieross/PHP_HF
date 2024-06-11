@@ -18,10 +18,8 @@ $student_json = '[
     }
 ]';
 
-// JSON dekódolása egy asszociatív tömbbé
 $students = json_decode($student_json, true);
 
-// Táblázat kiíratása
 echo "<table border='1'>
         <tr>
             <th>Name</th>

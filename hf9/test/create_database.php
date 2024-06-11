@@ -23,7 +23,6 @@ class CreateDatabase
             die("Failed to connect to database: " . $conn->connect_error);
         }
 
-        // Adatbázis létrehozása
         $sql = "CREATE DATABASE IF NOT EXISTS $this->database";
 
         if ($conn->query($sql) === false) {
@@ -32,7 +31,6 @@ class CreateDatabase
 
         $conn->select_db($this->database);
 
-        // Ügyfelek tábla létrehozása
         $sql = "CREATE TABLE IF NOT EXISTS customers (
             id INT PRIMARY KEY AUTO_INCREMENT,
             name VARCHAR(255) NOT NULL,
@@ -43,7 +41,6 @@ class CreateDatabase
             die("Hiba az ügyfelek tábla létrehozásakor: " . $conn->error);
         }
 
-        // Rendelések tábla létrehozása
         $sql = "CREATE TABLE IF NOT EXISTS orders (
             id INT PRIMARY KEY AUTO_INCREMENT,
             customer_id INT NOT NULL,

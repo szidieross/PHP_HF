@@ -24,7 +24,6 @@
     <?php
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['seconds'])) {
-        // Call the function when the form is submitted
         secondsToHours();
     }
 

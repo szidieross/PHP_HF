@@ -1,26 +1,20 @@
 <?php
-// Ellenőrizzük, hogy van-e már sütink a kosárhoz
 $cart = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'], true) : [];
 
-// Ha az űrlapot elküldték (termék hozzáadása a kosárhoz)
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['add_to_cart'])) {
         $product = isset($_POST['product']) ? $_POST['product'] : '';
 
-        // Ha a termék még nincs a kosárban, adjuk hozzá
         if (!in_array($product, $cart)) {
             $cart[] = $product;
 
-            // Frissítjük a sütiket
-            setcookie('cart', json_encode($cart), time() + 3600 * 24 * 30); // 30 napig érvényes
+            setcookie('cart', json_encode($cart), time() + 3600 * 24 * 30);
         }
     }
 
-    // Ha az űrlapot elküldték (kosár ürítése)
     if (isset($_POST['clear_cart'])) {
-        // Kosár ürítése
         $cart = [];
-        setcookie('cart', '', time() - 3600); // Lejárattal azonnali ürítés
+        setcookie('cart', '', time() - 3600);
     }
 }
 ?>

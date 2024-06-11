@@ -98,10 +98,6 @@ class Customer
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            // $row = $result->fetch_assoc();
-            // $this->id = $row["id"];
-            // $this->username = $row["username"];
-            // $this->balance = $row["balance"];
             echo "<br/>" . $this;
         } else {
             echo "<br/>Felhasznalonev nem talalhato.";

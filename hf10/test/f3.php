@@ -1,22 +1,16 @@
 <?php
 
-// cURL inicializálása
 $ch = curl_init();
 
-// cURL beállítások
 curl_setopt($ch, CURLOPT_URL, 'https://fakestoreapi.com/products');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-// cURL kérés végrehajtása és válasz elmentése
 $response = curl_exec($ch);
 
-// cURL lezárása
 curl_close($ch);
 
-// JSON dekódolása
 $products = json_decode($response, true);
 
-// Táblázat kiíratása
 echo "<table border='1'>
         <tr>
             <th>ID</th>

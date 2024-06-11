@@ -29,8 +29,6 @@ if (isset($_POST["register"]) && $_SERVER['REQUEST_METHOD'] === "POST") {
     if (!$stmt->execute()) {
         die("Hiba: " . $conn->error);
     }
-
-    // echo "Felhasználó létrehozva";
 }
 
 ?>

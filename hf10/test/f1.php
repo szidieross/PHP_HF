@@ -13,10 +13,8 @@ $json = '{
     }
 }';
 
-// JSON dekódolása egy asszociatív tömbbé
 $data = json_decode($json, true);
 
-// Különböző elemek kiíratása
 echo "<br/>Könyv címe: " . $data['book']['name'] . PHP_EOL;
 echo "<br/>Szerző: " . $data['book']['author'] . PHP_EOL;
 echo "<br/>Megjelenés éve: " . $data['book']['year'] . PHP_EOL;

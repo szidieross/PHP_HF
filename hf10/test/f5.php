@@ -35,18 +35,14 @@ $jsonData = '[
 
 echo "<pre>";
 
-// JSON dekódolása PHP tömbbé
 $books = json_decode($jsonData, true);
 
-// Könyvek rendezése kategóriák szerint egy asszociatív tömbbe
 $sortedBooks = [];
 foreach ($books as $book) {
     $category = $book['category'];
     $sortedBooks[$category][] = $book;
-    // var_dump($sortedBooks);
 }
 
-// HTML táblázat készítése
 echo "<table border='1'>
         <tr>
             <th>Category</th>
